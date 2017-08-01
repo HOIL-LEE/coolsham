@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          coolsham
+          storeID와 국가명 불러오기 - coolsham
         
     </title>
 
-    <link rel="canonical" href="https://coolsham.github.io/archives/">
+    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/magento-storeId-countryName-구하기/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/undefined')
-            /*page*/
+            background-image: url('undefined')
+            /*post*/
         
     }
     
@@ -83,10 +83,20 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>coolsham&#39;s blog</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#magento" title="magento">magento</a>
+                            
+                              <a class="tag" href="/tags/#php" title="php">php</a>
+                            
+                        </div>
+                        <h1>storeID와 국가명 불러오기</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Hoil Lee on
+                            2017-08-01
+                        </span>
                     </div>
                 
 
@@ -189,233 +199,142 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <ol>
+<li>storeID 구하기</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">        \Magento\Store\Model\StoreManagerInterface $storeManager,</span></span></div><div class="line"><span class="function"><span class="params">    )</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_storeManager = $storeManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStoreId</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;_storeManager-&gt;getStore()-&gt;getId();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>위와 같이 생성자에 선언 후</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">       $storeId = <span class="keyword">$this</span>-&gt;getStoreId();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>위와 같이 사용하면 된다. $storeId에 저장된다.</p>
+<hr>
+<ol>
+<li>countryName 구하기</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">      \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation,</span></span></div><div class="line"><span class="function"><span class="params">      \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig</span></span></div><div class="line"><span class="function"><span class="params">  )</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">$this</span>-&gt;countryInformation = $countryInformation;</div><div class="line">      <span class="keyword">$this</span>-&gt;scopeConfig = $scopeConfig;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>마찬가지로 위의 2개를 생성자에 호출해준다.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        $countryInfo = <span class="keyword">$this</span>-&gt;countryInformation-&gt;getCountryInfo($country);</div><div class="line">        $countryName = $countryInfo-&gt;getFullNameLocale();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>필요한 부분에서 저런 식으로 호출하면 언어에 맞는 국가명을 호출할 수 있다.</p>
+<hr>
+<p>참 쉽죠?</p>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
-                    <span class="tag-text">2017</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    08-01
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/08/01/magento-storeId-countryName-구하기/" style="color: #0085a1">
-                        <span>
-                            storeID와 국가명 불러오기
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    08-01
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/08/01/array-to-json-in-php/" style="color: #0085a1">
-                        <span>
-                            array-to-json-in-php
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    07-28
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/07/28/주택담보대출-절차/" style="color: #0085a1">
-                        <span>
-                            아낌e 보금자리론 대출 신청
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    07-26
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/07/26/what-is-uri/" style="color: #0085a1">
-                        <span>
-                            URI와 URL의 차이점
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/08/01/array-to-json-in-php/" data-toggle="tooltip" data-placement="top" title="array-to-json-in-php">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
             </div>
             
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#magento" title="magento">magento</a>
+                        
+                          <a class="tag" href="/tags/#php" title="php">php</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
         </div>
     </div>
-</div>
+</article>
 
-                <!-- 如果开启评论功能 -->
-                
-            </div>
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-        
-            
-            <a href="/tags/#magento" title="magento" rel="2">magento</a>
-            
-        
-            
-            <a href="/tags/#php" title="php" rel="2">php</a>
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-</section>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
-        
 
-        
-            <p>Let&#39;s get it</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-            
-
-            
-
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/coolsham">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2017/08/01/magento-storeId-countryName-구하기/">storeID와 국가명 불러오기</a>
-        </li>
-      
-        <li>
-          <a href="/2017/08/01/array-to-json-in-php/">array-to-json-in-php</a>
-        </li>
-      
-        <li>
-          <a href="/2017/07/28/주택담보대출-절차/">아낌e 보금자리론 대출 신청</a>
-        </li>
-      
-        <li>
-          <a href="/2017/07/26/what-is-uri/">URI와 URL의 차이점</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-</ul>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
