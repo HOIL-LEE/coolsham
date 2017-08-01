@@ -2,18 +2,8 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>https://coolsham.github.io/post-sitemap.xml</loc>
-        <lastmod>2017-08-01T03:55:30.637Z</lastmod>
-    </sitemap>
-
-    <sitemap>
         <loc>https://coolsham.github.io/page-sitemap.xml</loc>
         <lastmod>2017-08-01T05:17:58.426Z</lastmod>
-    </sitemap>
-
-    <sitemap>
-        <loc>https://coolsham.github.io/tag-sitemap.xml</loc>
-        <lastmod>2017-08-01T03:55:30.637Z</lastmod>
     </sitemap>
 
 </sitemapindex>
