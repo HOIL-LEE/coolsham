@@ -8,21 +8,21 @@
     
     <url>
         <loc>https://coolsham.github.io/tags/</loc>
-        <lastmod>2017-08-01T03:55:30.662Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://coolsham.github.io/about/</loc>
-        <lastmod>2017-08-01T03:55:30.642Z</lastmod>
+        <lastmod>2017-08-01T05:17:58.426Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://coolsham.github.io/archive/</loc>
-        <lastmod>2017-08-01T03:55:30.642Z</lastmod>
+        <lastmod>2017-08-01T05:17:41.442Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://coolsham.github.io/about/</loc>
+        <lastmod>2017-08-01T05:08:58.970Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
