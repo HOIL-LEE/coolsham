@@ -3,14 +3,14 @@
 
     <url>
         <loc>https://coolsham.github.io/tags/uri/</loc>
-        <lastmod>2017-07-26T02:17:50.000Z</lastmod>
+        <lastmod>2017-08-01T06:21:10.767Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://coolsham.github.io/tags/url/</loc>
-        <lastmod>2017-07-26T02:17:50.000Z</lastmod>
+        <lastmod>2017-08-01T06:21:10.767Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -46,6 +46,34 @@
     <url>
         <loc>https://coolsham.github.io/tags/php/</loc>
         <lastmod>2017-08-01T06:24:17.935Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/mysql/</loc>
+        <lastmod>2017-08-01T08:08:49.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/sql/</loc>
+        <lastmod>2017-08-01T08:08:49.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/DB-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%B3%80%EA%B2%BD/</loc>
+        <lastmod>2017-08-01T08:08:49.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/query/</loc>
+        <lastmod>2017-08-01T08:08:49.786Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
