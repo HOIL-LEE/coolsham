@@ -2,20 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://coolsham.github.io/tags/magento/</loc>
-        <lastmod>2017-08-01T08:33:27.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://coolsham.github.io/tags/php/</loc>
-        <lastmod>2017-08-01T08:33:27.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://coolsham.github.io/tags/mysql/</loc>
         <lastmod>2017-08-01T08:33:42.353Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -74,6 +60,20 @@
     <url>
         <loc>https://coolsham.github.io/tags/%EC%A3%BC%ED%83%9D%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C/</loc>
         <lastmod>2017-08-01T08:35:06.361Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/magento/</loc>
+        <lastmod>2017-08-01T08:37:00.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/tags/php/</loc>
+        <lastmod>2017-08-01T08:37:00.265Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

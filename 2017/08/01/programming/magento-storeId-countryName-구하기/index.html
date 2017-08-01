@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/magento-storeId-countryName-구하기/">
+    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/programming/magento-storeId-countryName-구하기/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -212,13 +212,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="1-storeid-구하기">1. storeID 구하기</h2>
+                <h2 id="storeid-구하기">storeID 구하기</h2>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">        \Magento\Store\Model\StoreManagerInterface $storeManager,</span></span></div><div class="line"><span class="function"><span class="params">    )</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_storeManager = $storeManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStoreId</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;_storeManager-&gt;getStore()-&gt;getId();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>위와 같이 생성자에 선언 후</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">       $storeId = <span class="keyword">$this</span>-&gt;getStoreId();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>위와 같이 사용하면 된다. $storeId에 저장된다.</p>
 <hr>
-<h2 id="2-countryname-구하기">2. countryName 구하기</h2>
+<h2 id="countryname-구하기">countryName 구하기</h2>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">      \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation,</span></span></div><div class="line"><span class="function"><span class="params">      \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig</span></span></div><div class="line"><span class="function"><span class="params">  )</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">$this</span>-&gt;countryInformation = $countryInformation;</div><div class="line">      <span class="keyword">$this</span>-&gt;scopeConfig = $scopeConfig;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>마찬가지로 위의 2개를 생성자에 호출해준다.</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        $countryInfo = <span class="keyword">$this</span>-&gt;countryInformation-&gt;getCountryInfo($country);</div><div class="line">        $countryName = $countryInfo-&gt;getFullNameLocale();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
@@ -233,12 +233,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/08/01/mysql-문자열-변경/" data-toggle="tooltip" data-placement="top" title="DB 문자열 변경">&larr; Previous Post</a>
+                            <a href="/2017/08/01/programming/mysql-문자열-변경/" data-toggle="tooltip" data-placement="top" title="DB 문자열 변경">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/08/01/array-to-json-in-php/" data-toggle="tooltip" data-placement="top" title="array-to-json-in-php">Next Post &rarr;</a>
+                            <a href="/2017/08/01/programming/array-to-json-in-php/" data-toggle="tooltip" data-placement="top" title="array-to-json-in-php">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -264,7 +264,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-storeid-구하기"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. storeID 구하기</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-countryname-구하기"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. countryName 구하기</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#storeid-구하기"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">storeID 구하기</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#countryname-구하기"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">countryName 구하기</span></a></li></ol>
         
         </div>
       </aside>

@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          array-to-json-in-php - coolsham
+          URI와 URL의 차이점 - coolsham
         
     </title>
 
-    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/array-to-json-in-php/">
+    <link rel="canonical" href="https://coolsham.github.io/2017/07/26/programming/what-is-uri/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('null')
+            background-image: url('undefined')
             /*post*/
         
     }
@@ -86,16 +86,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#magento" title="magento">magento</a>
+                              <a class="tag" href="/tags/#uri" title="uri">uri</a>
                             
-                              <a class="tag" href="/tags/#php" title="php">php</a>
+                              <a class="tag" href="/tags/#url" title="url">url</a>
                             
                         </div>
-                        <h1>array-to-json-in-php</h1>
-                        <h2 class="subheading">php에서 javascript로 json 데이터 넘기기</h2>
+                        <h1>URI와 URL의 차이점</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by coolsham on
-                            2017-08-01
+                            2017-07-26
                         </span>
                     </div>
                 
@@ -212,15 +212,36 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>요구사항 : php에서 DB로 연결하여 받은 데이터 값과 기존에 갖고 있는 값을 한 번에 javascript로 넘기기</p>
-<p>현재 상태 : DB로 연결하여 받은 값은 배열형태이며 제가 추가로 넘기고 싶은 값은 그냥 value입니다.</p>
-<p>배열과 value 한 개를 json형태로 encoding하는 방법입니다.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">        $countryInfo = <span class="keyword">$this</span>-&gt;countryInformation-&gt;getCountryInfo($country);</div><div class="line">        $countryName = $countryInfo-&gt;getFullNameLocale();</div><div class="line">        $result = $banItemManagement-&gt;getBanItemList($country, $carrierCode, $sku, $storeId);</div><div class="line"></div><div class="line">        $response-&gt;setContents(json_encode(<span class="keyword">array</span>(<span class="string">'result'</span>=&gt;$result,<span class="string">'countryName'</span>=&gt;$countryName), JSON_UNESCAPED_UNICODE));</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>위와 같이 response를 보냅니다. 이러면 json형태로 js에 전달됩니다. 그러면 이걸 받은 js에서는 어떻게 처리할까요??<strong>success부분</strong> 을 주목해서 보면 됩니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">checkBanItems : <span class="function"><span class="keyword">function</span>(<span class="params">country, shppMethod, skus</span>) </span>&#123;</div><div class="line">               <span class="keyword">var</span> products = <span class="literal">null</span>;</div><div class="line">               <span class="keyword">var</span> cName = <span class="keyword">this</span>.getCountryName(country);</div><div class="line">               <span class="keyword">if</span>(skus.length) &#123;</div><div class="line">                   jQuery.ajax(&#123;</div><div class="line">                       url: <span class="string">'/checkout/ajax/searchbanitem'</span>,</div><div class="line">                       type: <span class="string">'POST'</span>,</div><div class="line">                       <span class="keyword">async</span>: <span class="literal">false</span>,</div><div class="line">                       data: &#123;</div><div class="line">                           <span class="string">'country'</span>: country,</div><div class="line">                           <span class="string">'method'</span>: shppMethod,</div><div class="line">                           <span class="string">'sku'</span>: skus</div><div class="line">                       &#125;,</div><div class="line">                       success:<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">                            <span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(response);</div><div class="line">                           <span class="built_in">console</span>.log(json);</div><div class="line">                           <span class="keyword">var</span> obj_length = <span class="built_in">Object</span>.keys(json).length;</div><div class="line">                           <span class="built_in">console</span>.log(obj_length);</div><div class="line">                           <span class="keyword">if</span>(obj_length==<span class="number">0</span> ) &#123;</div><div class="line">                               banMessage = <span class="literal">null</span>;</div><div class="line">                           &#125;</div><div class="line">                           <span class="keyword">else</span> &#123;</div><div class="line">                               <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;obj_length;i++) &#123;</div><div class="line">                                   <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">                                       products = json[<span class="string">'result'</span>][i][<span class="string">'sku_name'</span>];</div><div class="line">                                   &#125;</div><div class="line">                                   <span class="keyword">else</span> &#123;</div><div class="line">                                       products = products + <span class="string">", "</span> + json[<span class="string">'result'</span>][i][<span class="string">'sku_name'</span>];</div><div class="line">                                   &#125;</div><div class="line">                               &#125;</div><div class="line">                               banMessage = $t(<span class="string">'%1 cannot ship %2 to %3. '</span>).replace(<span class="string">'%1'</span>,shppMethod.toUpperCase()).replace(<span class="string">'%2'</span>, products).replace(<span class="string">'%3'</span>, json[<span class="string">'countryName'</span>]);</div><div class="line">                               alert(&#123;</div><div class="line">                                   content: banMessage + $t(<span class="string">'Please select another shipping method.'</span>)</div><div class="line">                               &#125;);</div><div class="line">                           &#125;</div><div class="line">                       &#125;,</div><div class="line">                       error : <span class="function"><span class="keyword">function</span>(<span class="params">request, status, error </span>) </span>&#123;</div><div class="line">                           <span class="comment">// 오류가 발생했을 때 호출된다.</span></div><div class="line">                           <span class="built_in">console</span>.log(<span class="string">"code:"</span>+request.status+<span class="string">"\n"</span>+<span class="string">"message:"</span>+request.responseText+<span class="string">"\n"</span>+<span class="string">"error:"</span>+error);</div><div class="line">                       &#125;,</div><div class="line">                       complete:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">                           <span class="keyword">return</span> banMessage;</div><div class="line">                       &#125;,</div><div class="line">                   &#125;).done();</div><div class="line">               &#125;</div><div class="line">           &#125;,</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Object&#123;  </div><div class="line">   result:Array(2),</div><div class="line">   countryName:"미국"</div><div class="line">&#125;countryName:"미국"result:Array(2)</div><div class="line">0:Object</div><div class="line">country_id:"US"shipping_method:"dhl_dhl"sku_name:"KKK깍두기"__proto__:Object</div><div class="line">1:Object</div><div class="line">country_id:"US"shipping_method:"dhl_dhl"sku_name:"KKK챠콜그레이 투버튼 슬림정장(BZU4SB1101)"__proto__:Object</div></pre></td></tr></table></figure>
-<p><strong>products = json[‘result’][i][‘sku_name’];</strong> 이런 형태로 해당 sku의 이름을 추출할 수 있습니다.</p>
-<p>ajax를 통해 php와 연결하여, json형태로 값을 받는 내용이었습니다.</p>
+                <p>첫 게시물로 무엇을 할까 고민하다가 평소에 자주 사용하지만 정확한 차이점을 몰라서 매번 궁금해 하던 것을 정리하려 한다.</p>
+<p>다음 글은 아래의 순서로 진행된다.</p>
+<ul>
+<li>URL, URI의 정의</li>
+<li>어떤 때에 사용해야 하는가</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>URL, URI의 정의</p>
+</li>
+<li>
+<p>URL : Uniform Resource Locator</p>
+</li>
+<li>
+<p>URI : Uniform Resource Identifier</p>
+</li>
+</ul>
+<p>URI는 인터넷에서 자원을 나타내는 유일한 주소이다. URL은 URI의 포함되는 하위개념의 느낌인데, URN과 구분된다. 정확히 반으로 구분되는지는 모르겠다. URN이라는 걸 쓸 일이 없어서 찾아보진 않았다.</p>
+<hr>
+<ul>
+<li>어떤 때에 사용하는가</li>
+</ul>
+<p>사실 이것만 정확히 알아도 된다. URL은 항상 URI에 속한다. <a href="https://www.google.co.kr/search?q=uri" target="_blank" rel="external">https://www.google.co.kr/search?q=uri</a> 라는 주소가 있을 때, 뒤에 변수가 포함된 주소는 URL은 아니지만 URI이고, /search까지는 URL이면서 URI이다.</p>
+<hr>
+<p>[참고사이트 1][1]<br>
+[1]:<a href="https://blog.lael.be/post/61" target="_blank" rel="external">https://blog.lael.be/post/61</a><br>
+[참고사이트 2][2]<br>
+[2]:<a href="http://sunychoi.github.io/java/2015/04/27/uri-url.html" target="_blank" rel="external">http://sunychoi.github.io/java/2015/04/27/uri-url.html</a></p>
+<hr>
 
                 
 
@@ -229,13 +250,9 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/08/01/magento-storeId-countryName-구하기/" data-toggle="tooltip" data-placement="top" title="storeID와 국가명 불러오기">&larr; Previous Post</a>
+                            <a href="/2017/07/28/주택담보대출-절차/" data-toggle="tooltip" data-placement="top" title="아낌e 보금자리론 대출 신청">&larr; Previous Post</a>
                         </li>
                     
-                    
-                        <li class="next">
-                            <a href="/2017/07/28/주택담보대출-절차/" data-toggle="tooltip" data-placement="top" title="아낌e 보금자리론 대출 신청">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -269,9 +286,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#magento" title="magento">magento</a>
+                          <a class="tag" href="/tags/#uri" title="uri">uri</a>
                         
-                          <a class="tag" href="/tags/#php" title="php">php</a>
+                          <a class="tag" href="/tags/#url" title="url">url</a>
                         
                     </div>
                 </section>

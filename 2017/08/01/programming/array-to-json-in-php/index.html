@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          DB 문자열 변경 - coolsham
+          array-to-json-in-php - coolsham
         
     </title>
 
-    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/mysql-문자열-변경/">
+    <link rel="canonical" href="https://coolsham.github.io/2017/08/01/programming/array-to-json-in-php/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -86,17 +86,13 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#mysql" title="mysql">mysql</a>
+                              <a class="tag" href="/tags/#magento" title="magento">magento</a>
                             
-                              <a class="tag" href="/tags/#sql" title="sql">sql</a>
-                            
-                              <a class="tag" href="/tags/#DB 문자열 변경" title="DB 문자열 변경">DB 문자열 변경</a>
-                            
-                              <a class="tag" href="/tags/#query" title="query">query</a>
+                              <a class="tag" href="/tags/#php" title="php">php</a>
                             
                         </div>
-                        <h1>DB 문자열 변경</h1>
-                        <h2 class="subheading">mysql에서 문자열 다른 문자열로 변경</h2>
+                        <h1>array-to-json-in-php</h1>
+                        <h2 class="subheading">php에서 javascript로 json 데이터 넘기기</h2>
                         <span class="meta">
                             Posted by coolsham on
                             2017-08-01
@@ -216,12 +212,15 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>안녕하세요 오늘은 mysql에서 특정 단어를 다른 단어로 변경하는 방법을 포스팅합니다.</p>
-<p>sql은 어렵지 않습니다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">update</span> order_table </div><div class="line">  <span class="keyword">set</span> wbl_for_replace = <span class="keyword">replace</span>(wbl_for_replace,</div><div class="line">  <span class="string">'replace 대상 문자열'</span>,<span class="string">'replace한 문자열'</span>)</div></pre></td></tr></table></figure>
-<p>order_table은 테이블명이고, wbl_for_replace는 컬럼명입니다.<br>
-where 조건이 필요하시면 밑에다가 조건을 추가하면 됩니다.<br>
-오늘은 간단한 포스팅으로 마치겠습니다.</p>
+                <p>요구사항 : php에서 DB로 연결하여 받은 데이터 값과 기존에 갖고 있는 값을 한 번에 javascript로 넘기기</p>
+<p>현재 상태 : DB로 연결하여 받은 값은 배열형태이며 제가 추가로 넘기고 싶은 값은 그냥 value입니다.</p>
+<p>배열과 value 한 개를 json형태로 encoding하는 방법입니다.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">        $countryInfo = <span class="keyword">$this</span>-&gt;countryInformation-&gt;getCountryInfo($country);</div><div class="line">        $countryName = $countryInfo-&gt;getFullNameLocale();</div><div class="line">        $result = $banItemManagement-&gt;getBanItemList($country, $carrierCode, $sku, $storeId);</div><div class="line"></div><div class="line">        $response-&gt;setContents(json_encode(<span class="keyword">array</span>(<span class="string">'result'</span>=&gt;$result,<span class="string">'countryName'</span>=&gt;$countryName), JSON_UNESCAPED_UNICODE));</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>위와 같이 response를 보냅니다. 이러면 json형태로 js에 전달됩니다. 그러면 이걸 받은 js에서는 어떻게 처리할까요??<strong>success부분</strong> 을 주목해서 보면 됩니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">checkBanItems : <span class="function"><span class="keyword">function</span>(<span class="params">country, shppMethod, skus</span>) </span>&#123;</div><div class="line">               <span class="keyword">var</span> products = <span class="literal">null</span>;</div><div class="line">               <span class="keyword">var</span> cName = <span class="keyword">this</span>.getCountryName(country);</div><div class="line">               <span class="keyword">if</span>(skus.length) &#123;</div><div class="line">                   jQuery.ajax(&#123;</div><div class="line">                       url: <span class="string">'/checkout/ajax/searchbanitem'</span>,</div><div class="line">                       type: <span class="string">'POST'</span>,</div><div class="line">                       <span class="keyword">async</span>: <span class="literal">false</span>,</div><div class="line">                       data: &#123;</div><div class="line">                           <span class="string">'country'</span>: country,</div><div class="line">                           <span class="string">'method'</span>: shppMethod,</div><div class="line">                           <span class="string">'sku'</span>: skus</div><div class="line">                       &#125;,</div><div class="line">                       success:<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">                            <span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(response);</div><div class="line">                           <span class="built_in">console</span>.log(json);</div><div class="line">                           <span class="keyword">var</span> obj_length = <span class="built_in">Object</span>.keys(json).length;</div><div class="line">                           <span class="built_in">console</span>.log(obj_length);</div><div class="line">                           <span class="keyword">if</span>(obj_length==<span class="number">0</span> ) &#123;</div><div class="line">                               banMessage = <span class="literal">null</span>;</div><div class="line">                           &#125;</div><div class="line">                           <span class="keyword">else</span> &#123;</div><div class="line">                               <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;obj_length;i++) &#123;</div><div class="line">                                   <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">                                       products = json[<span class="string">'result'</span>][i][<span class="string">'sku_name'</span>];</div><div class="line">                                   &#125;</div><div class="line">                                   <span class="keyword">else</span> &#123;</div><div class="line">                                       products = products + <span class="string">", "</span> + json[<span class="string">'result'</span>][i][<span class="string">'sku_name'</span>];</div><div class="line">                                   &#125;</div><div class="line">                               &#125;</div><div class="line">                               banMessage = $t(<span class="string">'%1 cannot ship %2 to %3. '</span>).replace(<span class="string">'%1'</span>,shppMethod.toUpperCase()).replace(<span class="string">'%2'</span>, products).replace(<span class="string">'%3'</span>, json[<span class="string">'countryName'</span>]);</div><div class="line">                               alert(&#123;</div><div class="line">                                   content: banMessage + $t(<span class="string">'Please select another shipping method.'</span>)</div><div class="line">                               &#125;);</div><div class="line">                           &#125;</div><div class="line">                       &#125;,</div><div class="line">                       error : <span class="function"><span class="keyword">function</span>(<span class="params">request, status, error </span>) </span>&#123;</div><div class="line">                           <span class="comment">// 오류가 발생했을 때 호출된다.</span></div><div class="line">                           <span class="built_in">console</span>.log(<span class="string">"code:"</span>+request.status+<span class="string">"\n"</span>+<span class="string">"message:"</span>+request.responseText+<span class="string">"\n"</span>+<span class="string">"error:"</span>+error);</div><div class="line">                       &#125;,</div><div class="line">                       complete:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">                           <span class="keyword">return</span> banMessage;</div><div class="line">                       &#125;,</div><div class="line">                   &#125;).done();</div><div class="line">               &#125;</div><div class="line">           &#125;,</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Object&#123;  </div><div class="line">   result:Array(2),</div><div class="line">   countryName:"미국"</div><div class="line">&#125;countryName:"미국"result:Array(2)</div><div class="line">0:Object</div><div class="line">country_id:"US"shipping_method:"dhl_dhl"sku_name:"KKK깍두기"__proto__:Object</div><div class="line">1:Object</div><div class="line">country_id:"US"shipping_method:"dhl_dhl"sku_name:"KKK챠콜그레이 투버튼 슬림정장(BZU4SB1101)"__proto__:Object</div></pre></td></tr></table></figure>
+<p><strong>products = json[‘result’][i][‘sku_name’];</strong> 이런 형태로 해당 sku의 이름을 추출할 수 있습니다.</p>
+<p>ajax를 통해 php와 연결하여, json형태로 값을 받는 내용이었습니다.</p>
 
                 
 
@@ -229,9 +228,13 @@ where 조건이 필요하시면 밑에다가 조건을 추가하면 됩니다.<b
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2017/08/01/programming/magento-storeId-countryName-구하기/" data-toggle="tooltip" data-placement="top" title="storeID와 국가명 불러오기">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/2017/08/01/magento-storeId-countryName-구하기/" data-toggle="tooltip" data-placement="top" title="storeID와 국가명 불러오기">Next Post &rarr;</a>
+                            <a href="/2017/07/28/주택담보대출-절차/" data-toggle="tooltip" data-placement="top" title="아낌e 보금자리론 대출 신청">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -266,13 +269,9 @@ where 조건이 필요하시면 밑에다가 조건을 추가하면 됩니다.<b
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#mysql" title="mysql">mysql</a>
+                          <a class="tag" href="/tags/#magento" title="magento">magento</a>
                         
-                          <a class="tag" href="/tags/#sql" title="sql">sql</a>
-                        
-                          <a class="tag" href="/tags/#DB 문자열 변경" title="DB 문자열 변경">DB 문자열 변경</a>
-                        
-                          <a class="tag" href="/tags/#query" title="query">query</a>
+                          <a class="tag" href="/tags/#php" title="php">php</a>
                         
                     </div>
                 </section>
