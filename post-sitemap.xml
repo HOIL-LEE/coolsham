@@ -7,24 +7,8 @@
     </url>
 
     <url>
-        <loc>https://coolsham.github.io/2017/08/01/mysql-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%B3%80%EA%B2%BD/</loc>
-        <lastmod>2017-08-01T08:10:16.234Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://coolsham.github.io/2017/08/01/magento-storeId-countryName-%EA%B5%AC%ED%95%98%EA%B8%B0/</loc>
-        <lastmod>2017-08-01T06:24:17.935Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://coolsham.github.io/2017/07/28/%EC%A3%BC%ED%83%9D%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C-%EC%A0%88%EC%B0%A8/</loc>
-        <lastmod>2017-08-01T06:23:05.927Z</lastmod>
+        <lastmod>2017-08-01T08:35:06.361Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +16,23 @@
 
     <url>
         <loc>https://coolsham.github.io/2017/07/26/what-is-uri/</loc>
-        <lastmod>2017-08-01T06:21:10.767Z</lastmod>
+        <lastmod>2017-08-01T08:34:48.825Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/2017/08/01/mysql-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%B3%80%EA%B2%BD/</loc>
+        <lastmod>2017-08-01T08:33:42.353Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://coolsham.github.io/2017/08/01/magento-storeId-countryName-%EA%B5%AC%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2017-08-01T08:33:27.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,7 +40,7 @@
 
     <url>
         <loc>https://coolsham.github.io/2017/08/01/array-to-json-in-php/</loc>
-        <lastmod>2017-08-01T06:19:20.399Z</lastmod>
+        <lastmod>2017-08-01T08:32:54.833Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
